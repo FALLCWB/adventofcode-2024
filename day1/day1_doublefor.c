@@ -29,7 +29,7 @@ int main() {
 
     // Open the input file in read mode ("r")
     // The file must exist and contain lines with 2 integers per line
-    file = fopen("./numberlist.txt", "r");
+    file = fopen("./input", "r");
     if (!file) {  // If the file could not be opened
         perror("Error opening file");
         ret = 1;
@@ -38,13 +38,22 @@ int main() {
 
     // Allocate initial memory for the two lists
     left_list  = malloc(capacity * sizeof(int));
-    right_list = malloc(capacity * sizeof(int));
 
-    if (!left_list || !right_list) {
+    if (!left_list){
         fprintf(stderr, "Memory allocation failed\n");
         fclose(file);
         ret = 1;
         goto exit_0;
+    }
+
+    right_list = malloc(capacity * sizeof(int));
+
+    if (!right_list) {
+
+        fprintf(stderr, "Memory allocation failed\n");
+        fclose(file);
+        ret = 1;
+        goto exit_1;
     }
 
     // Read pairs of integers from the file
@@ -65,7 +74,7 @@ int main() {
                 fprintf(stderr, "Memory reallocation failed\n");
                 fclose(file);
                 ret = 1;
-                goto exit_1;
+                goto exit_2;
             }
 
             left_list  = temp_left;
@@ -113,9 +122,10 @@ int main() {
     printf("%d - Similarity\n", total_similarity);
 
     // Free dynamically allocated memory
+    exit_2:
+        free(right_list);
     exit_1:
         free(left_list);
-        free(right_list);
     exit_0:
         return ret;
     
