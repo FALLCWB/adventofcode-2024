@@ -10,7 +10,7 @@
 int is_safe(int *numbers, int count) {
     int level_inc = LEVEL_UNKNOWN; 
     int diff, i;
-    
+
     for (i = 1; i < count; i++) {
         diff = numbers[i] - numbers[i-1];
         if (diff == 0 || diff < -3 || diff > 3) {
@@ -40,7 +40,6 @@ int is_safe_with_dampener(int *numbers, int count) {
     }
     return 0;
 }
-
 
 int main() {
     FILE *file;
