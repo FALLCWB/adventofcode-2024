@@ -22,6 +22,7 @@ int main(void)
 		}
 		y++;
 	}
+	fclose(f);
 	// Part 1
 	for (i = 0; i <= y;  i++) {
 		for (j = 0; j <= x; j++) {
