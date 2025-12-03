@@ -68,7 +68,7 @@ int main(void)
 				&& letter[i][j+2] == 'M' && letter[i+1][j+1] == 'A'
 				&& letter[i+2][j] == 'S' && letter[i+2][j+2] == 'S'))
 				sum++;
-			}
+		}
 	}
 	printf("\nSum of XMAS Part 2 = %d\n", sum);
 	return 0;
