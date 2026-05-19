@@ -1,2 +1,4 @@
 .vscode/
 .vscode/*
+day*/day[0-9]*
+!day*/day[0-9]*.c
